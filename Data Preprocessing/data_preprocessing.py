@@ -24,6 +24,7 @@ X[:, 1:3] = imputer.transform(X[:, 1:3])
 
 
 # Encoding categorical Data
+# Encoding the Independant variable
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 labelencoder_X = LabelEncoder()
 X[:, 0] = labelencoder_X.fit_transform(X[:, 0])
@@ -31,6 +32,7 @@ X[:, 0] = labelencoder_X.fit_transform(X[:, 0])
 onehotencoder = OneHotEncoder(categorical_features=[0]) # first column be categoried
 X = onehotencoder.fit_transform(X).toarray()
 
+# Encoding the Dependant variable
 labelencoder_y = LabelEncoder()
 y = labelencoder_y.fit_transform(y)
 

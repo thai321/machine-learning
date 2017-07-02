@@ -65,6 +65,3 @@ plt.ylabel('Salary')
 plt.show()
 
 
-
-# predict new result at level 6.5 with Polynomial Regression
-#lin_reg_2.predict(poly_reg.fit_transform(6.5)) 

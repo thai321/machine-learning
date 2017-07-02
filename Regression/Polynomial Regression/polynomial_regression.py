@@ -34,7 +34,7 @@ lin_reg.fit(X,y)
 
 # Fittin Polynomiial Regression to the dataset
 from sklearn.preprocessing import PolynomialFeatures
-poly_reg = PolynomialFeatures(degree = 2) # change to 2, 3, 4
+poly_reg = PolynomialFeatures(degree = 4) # change to 2, 3, 4
 X_poly = poly_reg.fit_transform(X) 
 lin_reg_2 = LinearRegression() 
 lin_reg_2.fit(X_poly, y) # building a linear polynomial regression 
@@ -49,8 +49,8 @@ plt.show()
 
 
 # Visualising the Polynomial Regression results
-X_grid = np.arange(min(X), max(X), 0.1)
-X_grid = X_grid.reshape((len(X_grid), 1))
+X_grid = np.arange(min(X), max(X), 0.1) # an vector
+X_grid = X_grid.reshape((len(X_grid), 1)) # an matrix
 
 plt.scatter(X, y, color = 'red') # actually data (salary)
 plt.plot(X_grid, lin_reg_2.predict(poly_reg.fit_transform(X_grid)), color = 'blue') # predict the level 10
@@ -58,3 +58,10 @@ plt.title('Truth or Bluff (Polynomial Regression)')
 plt.xlabel('Position label')
 plt.ylabel('Salary')
 plt.show()
+
+
+# Predict new result at level 6.5 with Linear Regression
+lin_reg.predict(6.5) # ~ 330,378
+
+# predict new result at level 6.5 with Polynomial Regression
+lin_reg_2.predict(poly_reg.fit_transform(6.5)) # 158,862 --> better

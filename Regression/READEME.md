@@ -2,12 +2,12 @@
 
 ## Simple Linear Regressions:
 
-  > `y = b_0 + b_1 * x_1`
+  > `y = b0 + b1 * x1`
 
 - Dependent variable (DV) : y
-- Idependent variable (IV) : X_1
-- Coefficient : b_1
-- Constant term : b_0
+- Idependent variable (IV) : X1
+- Coefficient : b1
+- Constant term : b0
 
 ### Ordinary Least Square:
 > `Sum(y-y^)^2  -> min`
@@ -16,12 +16,12 @@
 ***
 
 ## Multiple Linear Regressions
-> `y = b_0 + b_1 * x_1 + b_2 * x_2 + ... +b_n * x_n`
+> `y = b0 + b1 * x1 + b2 * x2 + ... +bn * xn`
 
 - Dependent variable (DV) : y
-- Independent variables (IVs) : x_1, x_2, x_n
-- Coefficients : b_1, b_2, b_n
-- Constant term : b_0
+- Independent variables (IVs) : x1, x2, xn
+- Coefficients : b1, b2, bn
+- Constant term : b0
 
 ### 5 methods building a model
 1. All-in : throw all your variables
@@ -40,3 +40,6 @@
 3. Forward selection
 4. Bidirectional Elimination
 5. All Possible Model
+
+## Polynomial Linear Regression
+> `y = b0 + b1 * x1 + b2 * (x1)^2 + ... + bn * (x1)^n`

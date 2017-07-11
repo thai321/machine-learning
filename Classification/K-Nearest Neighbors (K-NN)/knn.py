@@ -29,7 +29,11 @@ X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 
 # Fitting the classifier to the Traning set
-# Create your classifier here
+from sklearn.neighbors import KNeighborsClassifier
+classifier = KNeighborsClassifier(n_neighbors = 5, metric = 'minkowski', p = 2) # p = 2 means using euclidean_distance
+classifier.fit(X_train, y_train)
+
+
 
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
@@ -37,8 +41,8 @@ y_pred = classifier.predict(X_test)
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
-# array([[65,  3],   --> 65 + 24 correct predictions
-#       [ 8, 24]])   --> 8+3 = 11 incorrect predictions 
+# array([[65,  4],   --> 65 + 29 =  94 correct predictions
+#       [ 3, 29])   -->  3 + 4 = 7 incorrect predictions 
 
 # Visualising the Training set results
 from matplotlib.colors import ListedColormap
@@ -52,7 +56,7 @@ plt.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c = ListedColormap(('red', 'green'))(i), label = j)
-plt.title('Classifier (Training set)')
+plt.title('K-NN (Training set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
@@ -71,7 +75,7 @@ plt.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c = ListedColormap(('red', 'green'))(i), label = j)
-plt.title('Classifier (Test set)')
+plt.title('K-NN (Test set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()

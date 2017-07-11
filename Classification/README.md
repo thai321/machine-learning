@@ -9,3 +9,5 @@
 >+ `Step 3`: Among these K neighbors, count the number of data points in each category
 >+ `Step 4`: Assign the new data point to the category where you counted the most neighbors
 >+ `Your Model is Ready`
+
+## Support Vector Machine (SVM)

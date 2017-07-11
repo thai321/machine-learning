@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-K-Nearest Neighbors
+Support Vector Machine (SVM)
 
 @author: ThaiNguyen
 """
@@ -19,7 +19,7 @@ y = dataset.iloc[:, 4].values # take a last column' values, purchase column
 # ********** Splitting the dataset into the Training set and Test set
 from sklearn.cross_validation import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
-# If there are 10 observations in the data, we will have 2 in the test set and 8 in the train set
+# If there are 20 observations in the data, we will have 5 in the test set and 15 in the train set
 
 
 # ********** Feature Scaling
@@ -29,9 +29,10 @@ X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 
 # Fitting the classifier to the Traning set
-from sklearn.neighbors import KNeighborsClassifier
-classifier = KNeighborsClassifier(n_neighbors = 5, metric = 'minkowski', p = 2) # p = 2 means using euclidean_distance
+from sklearn.svm import SVC
+classifier = SVC(kernel = 'linear', random_state = 0)
 classifier.fit(X_train, y_train)
+
 
 
 
@@ -41,8 +42,8 @@ y_pred = classifier.predict(X_test)
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
-# array([[65,  4],   --> 65 + 29 =  94 correct predictions
-#       [ 3, 29])   -->  3 + 4 = 7 incorrect predictions
+# array([[66,  2],   --> 66 + 24 =  90 correct predictions
+#       [ 8, 24])   -->  8 + 2 = 10 incorrect predictions
 
 # Visualising the Training set results
 from matplotlib.colors import ListedColormap
@@ -56,7 +57,7 @@ plt.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c = ListedColormap(('red', 'green'))(i), label = j)
-plt.title('K-NN (Training set)')
+plt.title('SVM (Training set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
@@ -75,7 +76,7 @@ plt.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c = ListedColormap(('red', 'green'))(i), label = j)
-plt.title('K-NN (Test set)')
+plt.title('SVM (Test set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
